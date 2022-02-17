@@ -69,7 +69,23 @@ install fusion inventory-9.5+3.0
 # tar -xvjf fusioninventory-9.5+3.0.tar.bz2 -C /var/www/glpi/plugins
 Attribuer les droits d'accès au serveur web
 # chown -R www-data /var/www/glpi/plugins
-Préparer la compatibilité du répertoire pour être visible dans GLPI
+
+Resoudre le problème de crontab en faisant cette commande 
+# crontab -u www-data -e
+ajouter cette ligne à la fin 
+*/1 * * * * /usr/bin/php5 /var/www/html/glpi/front/cron.php &>/dev/null
+
+Une fois fini, on relance le daemon du cron
+# /etc/init.d/cron restart
+
+Retournez ensuite sur la page web de GLPI et allez dans le menu : Configuration > Actions Automatiques.
+Dans la liste (souvent en page 2), cherchez l’action automatique nommée TaskScheduler et executer-le
+
+Config agent:
+http://ip_serveur/glpi/plugins/fusioninventory/ 
+
+tester la configuration agent:
+http://localhost:62354/
 
 
 
