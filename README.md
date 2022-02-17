@@ -64,6 +64,12 @@ Activer modules et fichiers de config
 # a2enconf php7.4-fpm glpi 
 redemarrer les services
 # systemctl restart php7.4-fpm apache2
+install fusion inventory-9.5+3.0
+# wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.5%2B3.0/fusioninventory-9.5+3.0.tar.bz2
+# tar -xvjf fusioninventory-9.5+3.0.tar.bz2 -C /var/www/glpi/plugins
+Attribuer les droits d'accès au serveur web
+# chown -R www-data /var/www/glpi/plugins
+Préparer la compatibilité du répertoire pour être visible dans GLPI
 
 
 
